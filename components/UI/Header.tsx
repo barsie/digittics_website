@@ -7,7 +7,7 @@ import { NAV_LINKS } from '@/data/data'
 import clsx from 'clsx'
 
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+// import { useState } from 'react'
 import Button from '../Button'
 
 
@@ -15,9 +15,9 @@ export default function Header() {
 
   const pathname = usePathname();
   
-  const [nav, setNav] = useState(false)
+  // const [nav, setNav] = useState(false)
 
-  const handleClick = () => setNav(!nav)
+  // const handleClick = () => setNav(!nav)
 
 
   return (

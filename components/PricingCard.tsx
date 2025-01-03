@@ -1,8 +1,6 @@
 
 import Link from "next/link";
 import { BiCheckCircle } from "react-icons/bi";
-import { usePathname } from "next/navigation";
-import Button from "./Button";
 
 type PricingCardProps = {
   title: string,
