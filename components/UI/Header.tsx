@@ -21,7 +21,7 @@ export default function Header() {
 
 
   return (
-    <header className='w-screen h-[90px] md:px-10 z-10 bg-[#fff] fixed top-0 shadow-[#0174da] drop-shadow-xl'>
+    <header className='w-screen h-[90px] px-4 md:px-10 z-10 bg-[#fff] fixed top-0 shadow-[#0174da] drop-shadow-xl'>
       <nav className="px-2 flex justify-between items-center w-full h-full">
         
         <Link href='/'> <Logo title={'SitaFrio'}/> </Link>
@@ -42,7 +42,7 @@ export default function Header() {
 
         </ul>
 
-        <Link href='/' className=''><Button title='Contactar Ventas' type='button'/></Link>
+        <Link href='https://wa.me/240555818481' target='_blank'><Button title='Contactar Ventas' type='button'/></Link>
       </nav>
 
     </header>

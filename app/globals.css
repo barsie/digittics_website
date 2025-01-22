@@ -4,11 +4,11 @@
 
 @layer base{
     .btn_primary{
-        @apply rounded-md border border-[#0174da] bg-[#0174da] px-6 py-3 text-[#fff]
+        @apply rounded-md border border-[#0174da] bg-[#0174da]  text-[#fff] px-4 py-2 md:px-6 md:py-3
     }
 
-    .btn-secundary{
-        @apply rounded-md border border-[#fff] bg-[#fff] px-6 py-3 text-[#0174da]
+    .btn-secondary{
+        @apply rounded-md border border-[#fff] bg-[#fff]  text-[#0174da] px-4 py-2 md:px-6 md:py-3
     }
 
     .logo_primary{
