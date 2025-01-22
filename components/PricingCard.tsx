@@ -5,6 +5,7 @@ import Image from "next/image";
 
 import { BiCheckCircle } from "react-icons/bi";
 import { PRICING_PLANS } from "@/data/data";
+import { BsBoxArrowUpRight } from "react-icons/bs";
 
 
 const PricingCard = () =>{
@@ -38,8 +39,9 @@ const PricingCard = () =>{
               </div>
           ))}
       </div>
-      <div className="my-6 px-8 text-center">
-        <b>Nota:</b> Estos planes no contemplan <strong>IVA</strong> <i>que según el Ley Nacional de Impuestos  es de 15%.</i>
+      <div className="my-6 px-8 text-center flex gap-2 items-center justify-center">
+        <b>Nota:</b> Estos planes no contemplan <strong className="cursor-pointer text-[#0174da]">
+          <Link className="flex items-center justify-center gap-1" href='https://www.guineaecuatorialpress.com/noticias/presentacion_oficial_de_la_nueva_ley_general_tributaria_de_guinea_ecuatorial#:~:text=Impuestos%20sobre%20Sueldos%20y%20Salarios,los%20cr%C3%A9ditos%20de%20este%20impuesto.' target="_blank">IVA <BsBoxArrowUpRight size={14}/></Link></strong> <i>que, según el Ley Nacional Tributaria es del 15%.</i>
       </div>
     </section>
   )

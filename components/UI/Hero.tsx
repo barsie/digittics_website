@@ -22,7 +22,7 @@ export default function Hero({startTitle, endTitle, icon}:HeroType) {
         {icon && <Image src={icon} alt='image'/>}
         <h2 className='text-[2.6em] md:text-[3.6em] text-center font-bold'>
           <span className='text-[3rem]'>{startTitle}</span>
-          <span className='text-[#0174da]'> hogar y negocios </span>
+          <span className='text-[#0174da]'> hogar y negocio </span>
           <span>{endTitle}</span>
         </h2>
     </section>
