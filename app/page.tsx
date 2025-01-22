@@ -10,7 +10,7 @@ console.log('Started request')
 
   return (
     <main className="max-w-[1240px] mx-auto my-32">
-      <Hero startTitle="Manten tu" endTitle="siempre fresco"/>
+      <Hero startTitle="Manten tu" endTitle="siempre frescos"/>
       <PricingHeader
         span="Planes y Precios" 
         title={"Estudio y Diagnóstico Gratuito"} 

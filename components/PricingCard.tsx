@@ -12,7 +12,7 @@ const PricingCard = () =>{
 
   return (
     <section className="">
-      <div className="mx-auto w-auto mb-18 grid grid-cols-1 md:grid-cols-4 items-center justify-center">
+      <div className="mx-auto w-auto mb-18 grid grid-cols-1 gap-8 md:grid-cols-4 md:gap-0  items-center justify-center">
           {PRICING_PLANS.map((plan, index) => (
               <div key={index} className="mx-auto px-8 w-[19.2rem] h-[32rem] bg-slate-50 shadow-xl md:shadow-none rounded-md border-r-[1px] border-[#0174da]">
                   <div className="py-4 text-center">
@@ -38,8 +38,8 @@ const PricingCard = () =>{
               </div>
           ))}
       </div>
-      <div className="my-6 text-center">
-        <b>Nota:</b> Estos planes no Contemplan <strong>IVA</strong>. <i>Que según el Ley de Impuestos Nacional es de 15%.</i>
+      <div className="my-6 px-8 text-center">
+        <b>Nota:</b> Estos planes no contemplan <strong>IVA</strong> <i>que según el Ley Nacional de Impuestos  es de 15%.</i>
       </div>
     </section>
   )

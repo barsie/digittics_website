@@ -18,9 +18,9 @@ type HeroType = {
 
 export default function Hero({startTitle, endTitle, icon}:HeroType) {
   return (
-    <section className={`hero_primary`}>
+    <section className={`hero_primary px-8`}>
         {icon && <Image src={icon} alt='image'/>}
-        <h2 className='text-[2.6em] md:text-[3.8em] text-center font-bold'>
+        <h2 className='text-[2.6em] md:text-[3.6em] text-center font-bold'>
           <span className='text-[3rem]'>{startTitle}</span>
           <span className='text-[#0174da]'> hogar y negocios </span>
           <span>{endTitle}</span>

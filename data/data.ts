@@ -8,7 +8,7 @@ export const NAV_LINKS = [
 
 
 export const PRICING_PLANS = [
-    {name: 'Básico', currency: 'CFAS', price: 7000, calendar: 'Al Mes, Por Aire Acondicionado', description: 'Plan Incluye:', button: 'Compar Plan', img: img, 
+    {name: 'Básico', currency: 'CFAS', price: 7000, calendar: 'Al Mes, Por Aire Acondicionado', description: 'Plan Incluye:', button: 'Comprar Plan', img: img, 
         features: [
             {item: "Alta de Servicio Gratis"},
             {item: "Lavado cada 60 días"},
@@ -18,7 +18,7 @@ export const PRICING_PLANS = [
         ]
     },
     
-    {name: 'Hogar', currency: 'CFAS', price: 10000, calendar: 'Al Mes, Por Aire Acondicionado', description: 'Plan Incluye:', button: 'Compar Plan', img: img, 
+    {name: 'Hogar', currency: 'CFAS', price: 10000, calendar: 'Al Mes, Por Aire Acondicionado', description: 'Plan Incluye:', button: 'Comprar Plan', img: img, 
         features: [
             {item: "Alta de Servicio Gratis"},
             {item: "Lavado cada 45 días"},
