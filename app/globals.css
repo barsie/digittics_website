@@ -4,7 +4,7 @@
 
 @layer base{
     .btn_primary{
-        @apply rounded-md border border-[#0174da] bg-[#0174da]  text-[#fff] px-4 py-2 md:px-6 md:py-3
+        @apply rounded-full border border-[#2aa638] bg-[#2aa638]  text-[#fff] px-4 py-2 md:px-6 md:py-3
     }
 
     .btn-secondary{
@@ -19,8 +19,58 @@
         @apply w-1/2
     }
 
+    
 }
 
+@layer utilities{
+    
+    .color-primary{
+        @apply text-[#2aa638]
+    }
+
+    .small-10 {
+        @apply text-[10px] font-[400];
+    }
+
+    .regular-32 {
+        @apply text-[32px] font-[400];
+    }
+
+    .regular-24 {
+        @apply text-[24px] font-[400];
+    }
+    
+    .regular-20 {
+        @apply text-[20px] font-[400];
+    }
+
+    .regular-18 {
+        @apply text-[18px] font-[400];
+    }
+
+    .regular-16 {
+        @apply text-[16px] font-[400];
+    }
+
+    .bold-40 {
+        @apply text-[48px] font-[700] leading-[120%];
+    }
+
+    .bold-32 {
+        @apply text-[32px] font-[700] leading-[120%];
+    }
+    .bold-24 {
+        @apply text-[24px] font-[700] leading-[120%];
+    }
+    
+    .bold-20 {
+        @apply text-[20px] font-[700];
+    }
+    
+    .bold-18 {
+        @apply text-[18px] font-[700];
+    }
+}
 
 .selection::selection{
     color: #fff;

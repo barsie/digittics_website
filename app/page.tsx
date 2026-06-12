@@ -1,38 +1,25 @@
 
-import Button from "@/components/Button";
-import ClientSection from "@/components/CountCard";
-import PricingCard from "@/components/PricingCard";
-import PricingHeader from "@/components/PricingHeader";
-import Hero from "@/components/UI/Hero";
-import Link from "next/link";
+import { BlockRenderer } from "@/components/BlockRederer";
+import { getHomePage } from "@/data/loaders";
+import { notFound } from "next/navigation";
 
-export default function Home() {
+import React from 'react'
 
-console.log('Started request')
+async function loader(){
+  const data = await getHomePage()
+  if(!data) notFound();
+  return {...data.data}
+}
+
+export default async function HomeRoute() {
+
+  const data =  await loader()
+  const blocks = data?.blocks || [];
+  // console.log(data)
 
   return (
     <main className="max-w-[1240px] mx-auto my-32">
-      <Hero startTitle="Manten tu" endTitle="siempre fresco"/>
-      <PricingHeader
-        span="Planes y Precios" 
-        title={"Estudio y Diagnóstico Gratuito"} 
-        promo={'Sin compromiso de contratación'}
-      />
-      <PricingCard/>
-        <div className="my-12">
-          <h1 className="text-center text-5xl text-[#0174da] font-bold">Clientes</h1>
-          <div className="w-auto mx-8 mt-12 grid grid-cols-1 md:grid-cols-4 md:mx-0 gap-8 items-center justify-center">
-            <ClientSection title={"Hogares Suscritos"} total={6}/>
-            <ClientSection title={"Empresas Suscritas"} total={2}/>
-            <ClientSection title={"Edificios Suscritos"} total={1}/>
-            <ClientSection title={"Aires mantenidos"} total={28}/>
-          </div>
-          <div className="w-auto mx-auto my-8 flex items-center justify-center cursor-pointer">
-            <Link href = 'https://wa.me/240555818481' target="_blank">
-              <Button type={"button"} title={"¡Pide tu primer servicio Gratis hoy!"}/>
-            </Link>
-          </div>
-        </div>
+      <BlockRenderer blocks={blocks}/>
     </main>
   );
 }

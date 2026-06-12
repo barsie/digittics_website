@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-import Header from "@/components/UI/Header";
-import Footer from "@/components/UI/Footer";
+import Header from "@/components/layout/Header";
+import { getGlobalSettings } from "@/data/loaders";
+import Footer from "@/components/layout/Footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,19 +22,27 @@ export const metadata: Metadata = {
   description: "Mantenimiento de sistemas de frio industrial",
 };
 
-export default function RootLayout({
+async function loader(){
+  const {data} = await getGlobalSettings();
+  if (!data) throw new Error("Failed to fetch global settings");
+  return { header: data?.header, footer: data?.footer }
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const { header, footer } = await loader()
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased selection hide-scrollbar`}
       >
-        <Header/>
+        <Header data={header}/>
         {children}
-        <Footer/>
+        <Footer data={footer}/>
       </body>
     </html>
   );

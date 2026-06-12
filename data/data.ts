@@ -1,8 +1,8 @@
 import img from '../public/whatsapp_b.png'
 
 export const NAV_LINKS = [
-    {url: "/", key: "plans", label: "Planes y Precios"},
-    {url: "/about", key: "about-us", label: "Nosotros"},
+    {url: "/", key: "home", label: "Home"},
+    {url: "/planes", key: "planes", label: "Planes y Precios"},
     {url: "/solutions", key: "solutions", label: "Soluciones"},
 ]
 

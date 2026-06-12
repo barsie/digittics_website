@@ -1,1 +1,0 @@
-// Contain the location map

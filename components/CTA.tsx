@@ -3,7 +3,7 @@
 import React from 'react'
 
 type CTAtype = {
-    text?: string
+  text?: string
 }
 
 const CTA = ({text}:CTAtype) => {
