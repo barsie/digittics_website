@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { StrapiImage } from '../StrapiImage'
 import { LogoProps , LinkProps} from '@/types'
-import { FaBars, FaQuestion } from 'react-icons/fa6'
+import { FaBars, FaXmark } from 'react-icons/fa6'
 import clsx from 'clsx'
 
 
@@ -81,7 +81,7 @@ export default function Header({data}: HeaderProps) {
         </div>
 
         <div className="md:hidden mr-5" onClick={handleclick}>
-          {!nav ? <FaBars className="w-6" /> : <FaQuestion className="w-5" />}
+          {!nav ? <FaBars className="w-9" /> : <FaXmark className="w-9" />}
         </div>
       </nav>
 
@@ -96,7 +96,7 @@ export default function Header({data}: HeaderProps) {
               className={clsx(
                 "py-6 text-black flex px-8 cursor-pointer pb-1.5",
                 {
-                  " font-bold text-blue-500": pathname === item.href,
+                  " font-bold color-primary": pathname === item.href,
                 },
               )}
             >
@@ -107,7 +107,7 @@ export default function Header({data}: HeaderProps) {
         <Link
           href={cta.href}
           target={cta.isExternal ? "_blank" : "_self"}
-          className="btn-primary"
+          className="block text-center btn_primary mt-8 mb-4 mx-4"
         >
           {cta.text}
         </Link>

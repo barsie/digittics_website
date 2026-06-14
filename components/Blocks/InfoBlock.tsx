@@ -3,25 +3,7 @@ import type { InfoBlockProps } from '@/types'
 import ReactMarkdown from 'react-markdown'
 import Link from 'next/link';
 import { StrapiImage } from '../StrapiImage';
-import { BiCheckCircle } from 'react-icons/bi';
-
-function H1(props:any) { 
-  return <h1 className="text-start text-3xl pb-4" {...props} />; 
-}
-
-function UL({children}:any) { 
-  return <ul className="space-y-2 my-4" >{children}</ul>; 
-}
-
-function LI({children}:any){
-    return (
-        <li className='flex gap-2 items-center'>
-            <BiCheckCircle className='color-primary' size={36}/>
-            <span className='text-lg'>{children}</span> 
-        </li>
-    )
-}
-
+import {UL, LI, H1 } from '../ReactMarkdownStyles'
 
 
 export default function InfoBlock({
@@ -34,10 +16,10 @@ export default function InfoBlock({
     const ctaData = Array.isArray(cta) ? cta[0] : cta
 
   return (
-    <section className='w-full mx-auto my-24'>
-        <h1 className='text-5xl text-center'>{headline}</h1>
-        <div className='py-12 '>
-            <div className='text-center px-8 grid grid-cols-1 md:grid-cols-2 items-center gap-8 md:px-0'>
+    <section className='w-full mx-auto px-4 my-12 md:my-20'>
+        <h1 className='text-2xl md:text-5xl text-center'>{headline}</h1>
+        <div className='py-12'>
+            <div className='grid grid-cols-1 md:grid-cols-2 items-center gap-8 md:px-0'>
                 <StrapiImage
                     src={image.url}
                     alt={image.alternativeText || "No alternative text provided"}

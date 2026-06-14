@@ -14,7 +14,7 @@ export function HeroSection({
     const ctaData = Array.isArray(cta) ? cta[0] : cta;
 
     return (
-        <section className="w-full mx-auto my-24 px-8 flex flex-col justify-between md:my-0 md:px-0">
+        <section className="w-full mx-auto px-4 flex flex-col justify-between md:my-0 md:px-0">
             <div className='grid md:grid-cols-2 gap-8 items-center max-w-[1240px] m-auto'>
                 <div className="">
                     <h1 className="text-black text-4xl md:text-7xl">{heading}</h1>
@@ -36,7 +36,7 @@ export function HeroSection({
                 <StrapiImage
                     src={image.url}
                     alt={image.alternativeText || "No alternative text provided"}
-                    className = "md:w-[90%] mx-auto rounded-full px-4 md:px-0"
+                    className = "w-0 mx-auto rounded-full px-4 md:w-[90%] md:px-0"
                     width = {640}
                     height = {480}
                 />

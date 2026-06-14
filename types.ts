@@ -27,7 +27,39 @@ export interface FeatureProps {
     description: string;
 }
 
-type ComponentType = "blocks.hero-section" | "blocks.info-block" | "blocks.partner-section" | "blocks.feature-section";
+export interface ArticleProps {
+    id: number;
+    documentId: string;
+    title: string;
+    description: string;
+    slug: string;
+    image: ImageProps;
+    author: string;
+    featured: boolean;
+    publishedAt: string;
+    createdAt: string;
+    updatedAt: string;
+}
+
+export interface CardProps {
+    documentId: string;
+    title: string;
+    description: string;
+    slug: string;
+    image: ImageProps;
+    price?: number;
+    startDate?: string;
+    createdAt: string;
+    basePath: string
+}
+
+type ComponentType = 
+    "blocks.hero-section" 
+    | "blocks.info-block" 
+    | "blocks.partner-section" 
+    | "blocks.feature-section" 
+    | "blocks.feature-article" 
+    | "blocks.subscribe";
 
 interface Base< 
     T extends ComponentType,
@@ -41,7 +73,13 @@ interface Base<
     data?: D;
 }
 
-export type Block = HeroSectionProps | InfoBlockProps | PartnerSectionProps | FeatureSectionProps;
+export type Block = 
+HeroSectionProps 
+| InfoBlockProps 
+| PartnerSectionProps 
+| FeatureSectionProps 
+| FeatureArticleProps 
+| SubscribeProps;
 
 export interface HeroSectionProps extends Base<"blocks.hero-section">{
     theme: "primary" | "secondary"
@@ -71,4 +109,18 @@ export interface PartnerSectionProps extends Base<"blocks.partner-section">{
 export interface FeatureSectionProps extends Base<"blocks.feature-section">{
     heading?: string;
     feature: FeatureProps[];
+}
+
+export interface FeatureArticleProps extends Base<"blocks.feature-article">{
+    headline: string;
+    link: LinkProps;
+    summary: string;
+    image: ImageProps
+}
+
+export interface SubscribeProps extends Base<"blocks.subscribe">{
+    headline: string;
+    content: string;
+    placeholder: string;
+    buttonText: string;
 }

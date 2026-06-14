@@ -8,18 +8,26 @@
     }
 
     .btn-secondary{
-        @apply rounded-md border border-[#fff] bg-[#fff]  text-[#0174da] px-4 py-2 md:px-6 md:py-3
-    }
-
-    .logo_primary{
-        @apply text-[#0174da] font-bold
+        @apply rounded-md border border-[#fff] bg-[#fff]  text-[#2aa638] px-4 py-2 md:px-6 md:py-3
     }
 
     .w-50{
         @apply w-1/2
     }
-
     
+    .newsletter__email {
+        @apply w-full sm:w-64 md:w-80 bg-white border border-transparent text-black py-2.5 px-3 rounded-md sm:rounded-l-xl sm:rounded-r-none focus:outline-none focus:border-[#2aa638] transition-colors duration-200;
+
+    }
+
+    .newsletter__email--error{
+        @apply border-red-600 focus:border-red-600 bg-red-50 text-red-900 placeholder-red-400;
+
+    }
+
+    .disabled{
+        @apply bg-[#c5f8cb96]
+    }
 }
 
 @layer utilities{
