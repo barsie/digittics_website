@@ -35,11 +35,15 @@ export interface ArticleProps {
     slug: string;
     image: ImageProps;
     author: string;
+    authorAvatar: string;
+    authorOccupation: string;
     featured: boolean;
     publishedAt: string;
     createdAt: string;
     updatedAt: string;
 }
+
+
 
 export interface CardProps {
     documentId: string;
@@ -59,7 +63,11 @@ type ComponentType =
     | "blocks.partner-section" 
     | "blocks.feature-section" 
     | "blocks.feature-article" 
-    | "blocks.subscribe";
+    | "blocks.subscribe"
+    | "blocks.heading"
+    | "blocks.paragraph-with-image"
+    | "blocks.paragraph"
+    | "blocks.full-image";
 
 interface Base< 
     T extends ComponentType,
@@ -79,7 +87,11 @@ HeroSectionProps
 | PartnerSectionProps 
 | FeatureSectionProps 
 | FeatureArticleProps 
-| SubscribeProps;
+| SubscribeProps
+| HeadingProps
+| ParagraphWithImageProps
+| ParagraphProps
+| FullImageProps
 
 export interface HeroSectionProps extends Base<"blocks.hero-section">{
     theme: "primary" | "secondary"
@@ -123,4 +135,26 @@ export interface SubscribeProps extends Base<"blocks.subscribe">{
     content: string;
     placeholder: string;
     buttonText: string;
+}
+
+export interface HeadingProps extends Base<"blocks.heading"> {
+    heading: string;
+    linkId: string;
+}
+
+export interface ParagraphProps extends Base<"blocks.paragraph"> {
+    content: string;
+}
+
+export interface ParagraphWithImageProps extends Base<"blocks.paragraph-with-image">{
+    content: string;
+    image: ImageProps;
+    reversed?: boolean;
+    imageLandscape?: boolean;
+}
+
+export interface FullImageProps extends Base<"blocks.full-image">{
+    id: number;
+    image: ImageProps;
+    __component: "blocks.full-image";
 }

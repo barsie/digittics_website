@@ -241,7 +241,7 @@ const blogPopulate = {
           cta: true,
         },
       },
-      "blocks.featured-article": {
+      "blocks.feature-article": {
         populate: {
           image: {
             fields: ["url", "alternativeText"],
@@ -274,11 +274,11 @@ const blogPopulate = {
       },
     },
   },
-}
+};
 
 export async function getContentBySlug(slug: string, path: string) {
   const url = new URL(path, BASE_URL);
-  url.search = qs.stringify({
+  const queryParams = qs.stringify({
     filters: {
       slug: {
         $eq: slug,
@@ -288,10 +288,18 @@ export async function getContentBySlug(slug: string, path: string) {
       image: {
         fields: ["url", "alternativeText"],
       },
-      // ...blogPopulate,
-      blocks: true,
+      ...blogPopulate,
     },
+  },
+  {encodeValuesOnly: true}
+);
+
+  url.search = queryParams;
+  console.log("API URL: ", url.href)
+  return fetchAPI(url.href, { 
+    method: "GET", 
+    next: {revalidate: 0}
+    // cache: "no-store"
   });
 
-  return fetchAPI(url.href, { method: "GET" });
 }

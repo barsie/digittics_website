@@ -18,8 +18,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "SitaFrio",
-  description: "Mantenimiento de sistemas de frio industrial",
+  title: "GREENLIVES",
+  description: "Investigación Tecnológica Sostenible",
 };
 
 async function loader(){
