@@ -1,6 +1,6 @@
 import React from "react";
 import { FeatureSectionProps } from "@/types";
-import { DynamicIcon } from "../IconComponent";
+import { DynamicIcon } from "../UI/IconComponent";
 
 
 const colorMap = {

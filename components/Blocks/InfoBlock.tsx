@@ -2,8 +2,8 @@ import React from 'react'
 import type { InfoBlockProps } from '@/types'
 import ReactMarkdown from 'react-markdown'
 import Link from 'next/link';
-import { StrapiImage } from '../StrapiImage';
-import {UL, LI, H1 } from '../ReactMarkdownStyles'
+import { StrapiImage } from '../UI/StrapiImage';
+import {UL, LI, H1 } from '../UI/ReactMarkdownStyles'
 
 
 export default function InfoBlock({
@@ -23,7 +23,7 @@ export default function InfoBlock({
                 <StrapiImage
                     src={image.url}
                     alt={image.alternativeText || "No alternative text provided"}
-                    className = "border-b-0 rounded-sm"
+                    className = "border-b-0 rounded-2xl"
                     width = {520}
                     height = {380}
                 />

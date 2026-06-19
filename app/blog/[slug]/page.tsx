@@ -2,11 +2,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { formatDate } from "@/utils/format-date";
 import { getContentBySlug } from "@/data/loaders";
-import { StrapiImage } from "@/components/StrapiImage";
 import { BlockRenderer } from "@/components/BlockRederer";
+import { StrapiImage } from "@/components/UI/StrapiImage";
 import type { ArticleProps, Block, CardProps, HeadingProps } from "@/types";
-import { Card } from "@/components/Card";
-import { ContentList } from "@/components/ContentList";
+import { Card } from "@/components/UI/Card";
+import { ContentList } from "@/components/UI/ContentList";
 
 
 export const dynamic = 'force-dynamic'
@@ -48,8 +48,8 @@ export default async function SingleBlogRoute({
               alt={
                 article.image.alternativeText || "No alternative text provided"
               }
-              width={500}
-              height={400}
+              width={520}
+              height={380}
               className="w-full h-full object-cover"
             />
           )}

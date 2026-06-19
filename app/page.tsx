@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import { BlockRenderer } from "@/components/BlockRederer";
-import { ContentList } from "@/components/ContentList";
+import { ContentList } from "@/components/UI/ContentList";
 import { getHomePage } from "@/data/loaders";
-import { BlogCard } from "@/components/BlogCard";
+import { BlogCard } from "@/components/UI/BlogCard";
 
 
 async function loader(){
@@ -22,10 +22,10 @@ export default async function HomeRoute() {
       <BlockRenderer blocks={blocks}/>
       <div className="container">
         <ContentList 
-            headline='Featured Articles'
-            path="/api/articles"
-            component={BlogCard}
-            featured
+          headline='Featured Articles'
+          path="/api/articles"
+          component={BlogCard}
+          featured
         />
       </div>
     </main>

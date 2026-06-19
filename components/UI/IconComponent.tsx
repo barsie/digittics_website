@@ -20,12 +20,10 @@ export const DynamicIcon = ({
   color = 'black'
 }: DynamicIconProps) => {
     
-    
-    const IconComponent = IconLibraries[iconName as IconName];
-
-    if (!IconComponent) {
-        return <IconsFa.FaQuestionCircle size={size} color={color} />;
-    }
-
-    return <IconComponent size={size} color={color} />;
+  const IconComponent = IconLibraries[iconName as IconName];  
+  if (!IconComponent) {
+    return <IconsFa.FaQuestionCircle size={size} color={color} />;
+  } 
+  return <IconComponent size={size} color={color} />;
+  
 };

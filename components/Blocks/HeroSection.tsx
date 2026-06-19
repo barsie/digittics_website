@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { StrapiImage } from "../StrapiImage";
+import { StrapiImage } from "../UI/StrapiImage";
 import type { HeroSectionProps } from "@/types";
 
 export function HeroSection({
@@ -36,9 +36,9 @@ export function HeroSection({
                 <StrapiImage
                     src={image.url}
                     alt={image.alternativeText || "No alternative text provided"}
-                    className = "w-0 mx-auto rounded-full px-4 md:w-[90%] md:px-0"
-                    width = {640}
-                    height = {480}
+                    className = "w-full h-full object-cover rounded-2xl"
+                    width = {520}
+                    height = {380}
                 />
 
             </div>

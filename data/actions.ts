@@ -1,12 +1,14 @@
 'use server'
 import { z } from "zod";
-import { subscribeService } from "./services";
+import eventSubscribeService, { subscribeService } from "./services";
+import { EventsSubscribeProps } from "@/types";
 
 const subscribeSchema = z.object({
     email: z.email({
         message: "Please enter a valid email address"
     })
 })
+
 
 export async function subscribeAction(prevState: any, formData:FormData) {
     // console.log("This is a server action");
@@ -55,6 +57,80 @@ export async function subscribeAction(prevState: any, formData:FormData) {
         zodErrors:null, 
         strapiErrors: null,
         errorMessage: null,
+        successMessage: "🔓 Successfully Subscribed!"
+    }
+}
+
+const eventSubscribeSchema = z.object({
+    firstName: z.string().min(1, {message: "Please enter your first name"}),
+    lastName: z.string().min(1, {message: "Please enter your last name"}),
+    email: z.email({ message: "Please enter your email address"}),
+    telephone: z.string()
+        .min(1)
+        .regex(/^(\+\d{1,3}[- ]?)?\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/, {
+            message: "Please enter a valid phone number"
+        }),
+})
+
+export async function eventSubscribeAction(prevState: any, formData: FormData){
+    const formDataObject = {
+        firstName: formData.get("firstName")?.toString().trim() || "",
+        lastName: formData.get("lastName")?.toString().trim() || "",
+        email: formData.get("email")?.toString().trim() || "",
+        telephone: formData.get("telephone")?.toString().trim() || "",
+        eventId: formData.get("eventId"),
+    }
+
+    const validatedFields = eventSubscribeSchema.safeParse(formDataObject);
+
+    if(!validatedFields.success){
+        return {
+            ...prevState,
+            zodErrors: validatedFields.error.flatten().fieldErrors, 
+            strapiErrors: null,
+            formData: {
+                ...formDataObject,
+            }
+        }
+    }
+
+    const dataToSend: EventsSubscribeProps = {
+        ...validatedFields.data,
+        event: {
+            connect: [formDataObject.eventId as string],
+        }
+    }
+
+    const responseData = await eventSubscribeService(dataToSend);
+
+    if(!responseData) {
+        return {
+            ...prevState,
+            strapiErrors: null,
+            zodErrors: null,
+            errorMessage: "Ups! Something went wrong. Please try again"
+        }
+    }
+
+        if(responseData.error){
+        return{
+            ...prevState,
+            strapiErrors: responseData.error,
+            zodError: null,
+            formData: {
+                ...formDataObject,
+            },
+            errorMessage: "✅ Already Joined.",
+            successMessage: null
+        }
+    }
+
+    return {
+        ...prevState,
+        zodErrors:null, 
+        strapiErrors: null,
+        errorMessage: null,
+        formData: null,
         successMessage: "🔓 Successfully Subscribed!"
     }
 }

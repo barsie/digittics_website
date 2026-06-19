@@ -1,8 +1,8 @@
 import { BlockRenderer } from '@/components/BlockRederer';
 import { getPageBySlug } from '@/data/loaders';
 import { notFound } from 'next/navigation';
-import { ContentList } from '@/components/ContentList';
-import { BlogCard } from '@/components/BlogCard';
+import { ContentList } from '@/components/UI/ContentList';
+import { BlogCard } from '@/components/UI/BlogCard';
 
 async function loader(slug: string) {
     const {data} = await getPageBySlug(slug);

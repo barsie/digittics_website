@@ -1,8 +1,8 @@
 import { FeatureArticleProps } from '@/types';
 import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
-import { StrapiImage } from '../StrapiImage';
-import { H1 } from '../ReactMarkdownStyles';
+import { StrapiImage } from '../UI/StrapiImage';
+import { H1 } from '../UI/ReactMarkdownStyles';
 
 export function FeatureArticle({
     headline,

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from "framer-motion"
-import { StrapiImage } from '../StrapiImage';
+import { StrapiImage } from '../UI/StrapiImage';
 import { PartnerSectionProps } from '@/types';
 
 export default function PartnerSection({

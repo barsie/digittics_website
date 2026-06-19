@@ -1,5 +1,5 @@
 import React from 'react'
-import { StrapiImage } from '../StrapiImage'
+import { StrapiImage } from '../UI/StrapiImage'
 import { FullImageProps } from '@/types'
 
 export default function FullImage({ image }: Readonly<FullImageProps>) {

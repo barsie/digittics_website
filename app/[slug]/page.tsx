@@ -1,7 +1,6 @@
 import { BlockRenderer } from '@/components/BlockRederer';
 import { getPageBySlug } from '@/data/loaders';
 import { notFound } from 'next/navigation';
-import React from 'react'
 
 interface PageProps {
     params: Promise<{slug: string}>

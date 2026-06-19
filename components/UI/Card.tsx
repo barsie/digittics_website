@@ -28,8 +28,8 @@ export function Card({
                 />
             </div>
 
-            <div className="flex flex-col flex-1 p-5 min-w-0">
-                <div className="w-full">
+            <div className="flex flex-col flex-1 min-w-0">
+                <div className="w-full px-5 py-5">
                     <h5 className="text-lg font-bold text-slate-900 line-clamp-2 leading-snug mb-2">
                         {title}
                     </h5>
@@ -37,7 +37,7 @@ export function Card({
                     <div className="flex flex-col gap-1 text-sm text-slate-600 mb-3">
                         {price && (
                             <p className="font-semibold text-emerald-700">
-                                <span>Price: </span>${price}
+                                <span>Price: </span>CFAS {price}
                             </p>
                         )}
                         {(startDate ?? createdAt) && (
@@ -47,7 +47,7 @@ export function Card({
                         )}
                     </div>
 
-                    <p className="text-sm text-slate-600 line-clamp-3 md:line-clamp-4">
+                    <p className="text-sm text-slate-600 line-clamp-2 md:line-clamp-4">
                         {description}
                     </p>
                 </div>

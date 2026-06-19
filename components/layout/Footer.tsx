@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { StrapiImage } from "../StrapiImage";
+import { StrapiImage } from "../UI/StrapiImage";
 import { LogoProps, LinkProps } from "@/types";
 
 interface FooterProps {

@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { StrapiImage } from '../StrapiImage'
+import { StrapiImage } from '../UI/StrapiImage'
 import { LogoProps , LinkProps} from '@/types'
 import { FaBars, FaXmark } from 'react-icons/fa6'
 import clsx from 'clsx'
@@ -10,11 +10,11 @@ import clsx from 'clsx'
 
 
 interface HeaderProps {
-    data: {
-        logo: LogoProps;
-        navigation: LinkProps[];
-        cta: LinkProps;
-    }
+  data: {
+    logo: LogoProps;
+    navigation: LinkProps[];
+    cta: LinkProps;
+  }
 }
 
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StrapiImage } from '../StrapiImage'
+import { StrapiImage } from '../UI/StrapiImage'
 import ReactMarkdown from 'react-markdown'
 import {ParagraphWithImageProps} from '@/types'
 
