@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import { getGlobalSettings } from "@/data/loaders";
 import Footer from "@/components/layout/Footer";
+import LivePreview from "@/components/Preview";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -42,6 +43,7 @@ export default async function RootLayout({
       >
         <Header data={header}/>
         {children}
+        <LivePreview/>
         <Footer data={footer}/>
       </body>
     </html>
