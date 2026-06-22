@@ -15,13 +15,13 @@ const homePageQuery = qs.stringify({
             image: {
               fields: ["url", "alternativeText"],
             },
-            logo: {
-              populate: {
-                image: {
-                  fields: ["url", "alternativeText"],
-                },
-              },
-            },
+            // logo: {
+            //   populate: {
+            //     image: {
+            //       fields: ["url", "alternativeText"],
+            //     },
+            //   },
+            // },
             cta: true,
           },
         },
@@ -119,13 +119,13 @@ const pageByQuerySlug = (slug: string) =>
               image: {
                 fields: ["url", "alternativeText"],
               },
-              logo: {
-                populate: {
-                  image: {
-                    fields: ["url", "alternativeText"],
-                  },
-                },
-              },
+              // logo: {
+              //   populate: {
+              //     image: {
+              //       fields: ["url", "alternativeText"],
+              //     },
+              //   },
+              // },
               cta: true,
             },
           },
@@ -223,13 +223,13 @@ const blogPopulate = {
           image: {
             fields: ["url", "alternativeText"],
           },
-          logo: {
-            populate: {
-              image: {
-                fields: ["url", "alternativeText"],
-              },
-            },
-          },
+          // logo: {
+          //   populate: {
+          //     image: {
+          //       fields: ["url", "alternativeText"],
+          //     },
+          //   },
+          // },
           cta: true,
         },
       },

@@ -19,16 +19,14 @@ export default function Footer({ data }: FooterProps) {
 
   return (
     <footer className="w-full bg-black text-gray-300 px-4 py-8 md:px-10 lg:px-16 border-t border-zinc-900">
-      {/* Sección Superior: Marca y Navegación Principal */}
       <div className="flex flex-col gap-6 pb-6 border-b border-zinc-900 md:flex-row md:items-center md:justify-between md:py-4">
         
-        {/* Bloque del Logotipo e Identidad */}
         <div className="flex items-center gap-3">
           {logo.image?.url && (
             <StrapiImage
               src={logo.image.url}
               alt={logo.image.alternativeText || "Logo corporativo"}
-              className="object-contain block shrink-0" // 💡 CORREGIDO: Cambiado de hidden a block
+              className="object-contain block shrink-0" 
               width={40}
               height={40}
             />

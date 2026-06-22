@@ -4,6 +4,10 @@ import { CardProps, EventProps } from "@/types";
 import { getContentBySlug } from "@/data/loaders";
 import { notFound } from "next/navigation";
 import EventSigupForm from "@/components/UI/EventSignupForm";
+import { IoArrowForward } from "react-icons/io5";
+import Link from "next/link";
+import { MdArrowForward } from "react-icons/md";
+
 
 async function loader(slug: string) {
   const response = await getContentBySlug(slug, "/api/events");
@@ -46,13 +50,18 @@ export default async function SingleEventRoute({
                     
                 />
            
-            <div>
+            <div className="">
                 <ContentList
                     headline="Featured Events"
                     path="/api/events"
                     featured={true}
                     component={EventCard}
                 />
+                <Link 
+                    href="/events" 
+                    className="mb-2 -mt-8 px-4 flex items-center justify-center md:justify-end text-[#2aa638]">
+                See all events <MdArrowForward/>
+                </Link>
             </div>
     </section>
   )

@@ -76,62 +76,84 @@ export default function EventSigupForm({
         <BlockRenderer blocks={blocks} />
         {startDate && (
           <p className="text-sm md:text-base mt-4">
-            <span className="font-semibold">Start Date: </span>{formatDate(startDate)}
+            <span className="font-semibold">Start Date: </span>
+            {formatDate(startDate)}
           </p>
         )}
         {price && (
           <p className="text-sm md:text-base mt-2">
-            <span className="font-semibold">Price: </span>{price}
+            <span className="font-semibold">Price: </span>
+            {price}
           </p>
         )}
       </div>
       <form
         action={formAction}
-        className="w-full md:w-auto my-4 md:my-8 rounded-2xl shadow-sm px-4 sm:px-6 md:px-8 py-6 md:py-8"
+        className="md:w-auto my-4 md:my-2 rounded-xl shadow-b-sm shadow-t-2xl px-4 sm:px-6 md:px-8 py-6 md:py-8 w-full"
         name="signup-form"
       >
-        {image && (
+         <div className="relative w-full h-48 sm:h-56 bg-slate-50 flex items-center justify-center overflow-hidden shrink-0 px-0 ">
+          {image?.url ? (
             <StrapiImage
-                src={image?.url}
-                alt={image.alt}
-                height={200}
-                width={200}
-                className="w-full h-40 mx-auto mb-4"
+              src={image?.url}
+              alt={image.alt}
+              width={400} 
+              height={250}
+              className="w-full h-full object-cover"
             />
-        )}
+          ) : (
+            <div className="flex flex-col items-center justify-center text-slate-400 gap-2">
+              <svg
+                className="w-8 h-8 opacity-40"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+              <span className="text-xs font-medium">Imagen no disponible</span>
+            </div>
+          )}
+
+         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 md:gap-8 my-4">
-            <TextInput
-                id="firstName"
-                label="First Name"
-                name="firstName"
-                error={zodErrors?.firstName}
-                defaultValue={formState?.formData?.firstName ?? ""}
-            />
-            <TextInput
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                error={zodErrors?.lastName}
-                defaultValue={formState?.formData?.lastName ?? ""}
-            />
+          <TextInput
+            id="firstName"
+            label="First Name"
+            name="firstName"
+            error={zodErrors?.firstName}
+            defaultValue={formState?.formData?.firstName ?? ""}
+          />
+          <TextInput
+            id="lastName"
+            label="Last Name"
+            name="lastName"
+            error={zodErrors?.lastName}
+            defaultValue={formState?.formData?.lastName ?? ""}
+          />
         </div>
-            <TextInput
-                id="email"
-                label="Email"
-                name="email"
-                type="email"
-                error={zodErrors?.email}
-                defaultValue={formState?.formData?.email ?? ""}
-            />
-            <TextInput
-                id="phone"
-                label="Phone"
-                name="telephone"
-                type="phone"
-                error={zodErrors?.telephone}
-                defaultValue={formState?.formData?.telephone ?? ""}
-            />
+        <TextInput
+          id="email"
+          label="Email"
+          name="email"
+          type="email"
+          error={zodErrors?.email}
+          defaultValue={formState?.formData?.email ?? ""}
+        />
+        <TextInput
+          id="phone"
+          label="Phone"
+          name="telephone"
+          type="phone"
+          error={zodErrors?.telephone}
+          defaultValue={formState?.formData?.telephone ?? ""}
+        />
         <input hidden type="text" name="eventId" defaultValue={eventId} />
         <SubmitButton
           text="Sign Up"

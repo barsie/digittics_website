@@ -34,7 +34,7 @@ export function Search(){
     return (
         <div className="flex items-center justify-start py-4">
             <input type="text"
-                placeholder="Search for new articles"
+                placeholder="Search for new articles, events and more"
                 name=""
                 id="" 
                 onChange={(e) => handleSearch(e.target.value)}

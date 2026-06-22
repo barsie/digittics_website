@@ -8,7 +8,6 @@ import { FaBars, FaXmark } from 'react-icons/fa6'
 import clsx from 'clsx'
 
 
-
 interface HeaderProps {
   data: {
     logo: LogoProps;
@@ -17,11 +16,9 @@ interface HeaderProps {
   }
 }
 
-
 export default function Header({data}: HeaderProps) {
 
     const pathname = usePathname();
-    const navLinkLight = pathname === "/solutions"
 
     const [nav, setNav] = useState(false)
     const handleclick = () => setNav(!nav)
@@ -33,23 +30,56 @@ export default function Header({data}: HeaderProps) {
   return (
     <header className="w-full mx-auto h-[90px] md:px-10 z-10 bg-white fixed top-0 ">
       <nav className="px-2 flex justify-between items-center md:gap-20 w-full h-full">
-        <Link href="/" className="flex flex-row items-center gap-2">
-          <StrapiImage
-            src={logo.image.url}
-            alt={logo.image.alternativeText || "No alternative text provided"}
-            className=""
-            width={40}
-            height={40}
-          />
-
-            {logo.logoText && (
-              <div className="flex flex-col">
-               <span className='bold-32 '>{logo.logoText}</span>
-                <span className='text-[11px] text-gray-600 -mt-2'>{logo.logoDescription}</span>
+        <div className="flex items-center justify-center">
+          <div className="md:hidden" onClick={handleclick}>
+            {!nav ? (
+              <FaBars className="w-9" size={16} />
+            ) : (
+              <FaXmark className="w-9" size={16} />
+            )}
+          </div>
+          <Link href="/" className="flex flex-row items-center gap-2">
+            {logo.image?.url ? (
+              <StrapiImage
+                src={logo.image.url}
+                alt={
+                  logo.image.alternativeText || "No alternative text provided"
+                }
+                className="hidden md:block"
+                width={40}
+                height={40}
+              />
+            ) : (
+              <div className="flex flex-col items-center justify-center text-slate-400 gap-2">
+                <svg
+                  className="w-8 h-8 opacity-40"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+                <span className="text-xs font-medium">
+                  No logo Image
+                </span>
               </div>
             )}
 
-        </Link>
+            {logo.logoText && (
+              <div className="flex flex-col">
+                <span className="md:bold-32 bold-24">{logo.logoText}</span>
+                <span className="text-[8px] -mt-1 md:text-[11px] md:-mt-2 text-gray-600 text-center">
+                  {logo.logoDescription}
+                </span>
+              </div>
+            )}
+          </Link>
+        </div>
 
         <ul className="hidden h-full md:flex justify-between items-center gap-12">
           {navigation.map((item) => (
@@ -70,7 +100,7 @@ export default function Header({data}: HeaderProps) {
           ))}
         </ul>
 
-        <div className="md:flex hidden">
+        <div className="md:flex">
           <Link
             href={cta.href}
             target={cta.isExternal ? "_blank" : "_self"}
@@ -78,10 +108,6 @@ export default function Header({data}: HeaderProps) {
           >
             {cta.text}
           </Link>
-        </div>
-
-        <div className="md:hidden mr-5" onClick={handleclick}>
-          {!nav ? <FaBars className="w-9" /> : <FaXmark className="w-9" />}
         </div>
       </nav>
 
@@ -104,14 +130,14 @@ export default function Header({data}: HeaderProps) {
             </Link>
           </li>
         ))}
-        <Link
+      </ul>
+      {/* <Link
           href={cta.href}
           target={cta.isExternal ? "_blank" : "_self"}
           className="block text-center btn_primary mt-8 mb-4 mx-4"
         >
           {cta.text}
-        </Link>
-      </ul>
+        </Link> */}
     </header>
   );
 }
