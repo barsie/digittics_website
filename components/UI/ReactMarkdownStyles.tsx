@@ -1,7 +1,7 @@
 import { BiCheckCircle } from "react-icons/bi";
 
 export function H1(props:any) { 
-  return <h1 className="text-start text-3xl pb-4" {...props} />; 
+  return <h1 className="text-center md:text-start text-3xl pb-4" {...props} />; 
 }
 
 export function UL({children}:any) { 

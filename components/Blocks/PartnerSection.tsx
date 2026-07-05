@@ -18,7 +18,7 @@ export default function PartnerSection({
   : `${text} +${partners.length}`;
 
   return (
-    <section className="w-auto mx-auto overflow-hidden py-10 px-4 my-0 md:my-12">
+    <section className="max-w-[1240px] w-auto mx-auto overflow-hidden py-10 px-4 my-0 md:my-12">
       
       <h3 className="text-center text-[#0f172a] font-semibold md:text-xl mb-8">
         {headingText}

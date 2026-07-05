@@ -45,7 +45,7 @@ export async function ContentList({
     const Component = component;
 
     return (
-        <section className="w-full mx-auto px-4 my-12">
+        <section className="w-full mx-auto px-0 my-12">
             <h3 className={`text-black text-2xl md:text-4xl my-6 ${headlineAlignment ?? ""} `}>{headline || "Featured Articles"}</h3>
             {showSearch && <Search />}
             <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-8">

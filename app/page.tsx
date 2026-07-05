@@ -18,9 +18,9 @@ export default async function HomeRoute() {
   // console.log(data)
 
   return (
-    <main className="max-w-[1240px] mx-auto my-32">
+    <main className="w-full mx-auto">
       <BlockRenderer blocks={blocks}/>
-      <div className="container">
+      <div className="max-w-[1240px] mx-auto px-4 md:px-0">
         <ContentList 
           headline='Featured Articles'
           path="/api/articles"

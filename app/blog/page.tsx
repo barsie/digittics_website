@@ -22,17 +22,19 @@ export default async function BlogRoute({searchParams}: PageProps) {
     const { blocks } = await loader("blog");
 
   return  (
-    <main className="max-w-[1240px] mx-auto my-32">
+    <main className="max-w-[1240px] mx-auto px-4 md:px-0 my-32 ">
         <BlockRenderer blocks={blocks}/>
-        <ContentList 
-            headline='Check out our latest articles'
-            path="/api/articles"
-            component={BlogCard}
-            showSearch
-            query={query}
-            showPagination
-            page={page}
-        />
+        <div className='mx-auto px-4 md:px-0'>
+            <ContentList 
+                headline='Check out our latest articles'
+                path="/api/articles"
+                component={BlogCard}
+                showSearch
+                query={query}
+                showPagination
+                page={page}
+            />
+        </div>
     </main>
   )   
 }

@@ -11,7 +11,7 @@ export function FeatureArticle({
     image
 }: Readonly<FeatureArticleProps>) {
   return (
-    <article className="w-full max-w-7xl mx-auto px-4 my-12 md:my-20">
+    <article className="max-w-[1240px] mx-auto my-12 md:my-20">
       <div className="flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12">
         <div className="flex-1 w-full text-center md:text-left">
           <h3 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 mb-4">

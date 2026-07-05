@@ -18,7 +18,7 @@ export default async function DynamicPageRoute({params}: PageProps) {
     const { blocks } = await loader(slug);
 
   return  (
-    <main className="max-w-[1240px] mx-auto my-32">
+    <main className="">
         <BlockRenderer blocks={blocks}/>
     </main>
   )   

@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { StrapiImage } from '../UI/StrapiImage'
@@ -22,29 +22,77 @@ export default function Header({data}: HeaderProps) {
 
     const [nav, setNav] = useState(false)
     const handleclick = () => setNav(!nav)
+    const menuRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+      setNav(false);
+    },[pathname])
+
+    useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setNav(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, []);
 
     if(!data) return null;
 
     const {logo, navigation, cta} = data;
 
   return (
-    <header className="w-full mx-auto h-[90px] md:px-10 z-10 bg-white fixed top-0 ">
+    <header className="w-full mx-auto h-[90px] md:px-10 z-10 bg-white fixed top-0">
       <nav className="px-2 flex justify-between items-center md:gap-20 w-full h-full">
         <div className="flex items-center justify-center">
-          <div className="md:hidden" onClick={handleclick}>
-            {!nav ? (
-              <FaBars className="w-9" size={16} />
-            ) : (
-              <FaXmark className="w-9" size={16} />
-            )}
+          <div ref={menuRef} className="relative md:hidden">
+            <div onClick={handleclick} className="cursor-pointer">
+              {!nav ? (
+                <FaBars className="w-9" size={16} />
+              ) : (
+                <FaXmark className="w-9" size={16} />
+              )}
+            </div>
+
+            <ul
+              className={
+                !nav
+                  ? 'hidden'
+                  : 'absolute left-0 top-full mt-6 bg-white drop-shadow-2xl w-screen h-screen z-50'
+              }
+            >
+              {navigation.map((item) => (
+                <li key={item.id}>
+                  <Link
+                    href={item.href}
+                    target={item.isExternal ? '_blank' : '_self'}
+                    onClick={() => setNav(false)}
+                    className={clsx(
+                      'py-6 text-black flex px-8 cursor-pointer pb-1.5',
+                      {
+                        'font-bold color-primary': pathname === item.href,
+                      },
+                    )}
+                  >
+                    <h5>{item.text}</h5>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
+
           <Link href="/" className="flex flex-row items-center gap-2">
             {logo.image?.url ? (
               <StrapiImage
                 src={logo.image.url}
-                alt={
-                  logo.image.alternativeText || "No alternative text provided"
-                }
+                alt={logo.image.alternativeText || 'No alternative text provided'}
                 className="hidden md:block"
                 width={40}
                 height={40}
@@ -61,12 +109,10 @@ export default function Header({data}: HeaderProps) {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={1.5}
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2 2v12a2 2 0 002 2z"
                   />
                 </svg>
-                <span className="text-xs font-medium">
-                  No logo Image
-                </span>
+                <span className="text-xs font-medium">No logo Image</span>
               </div>
             )}
 
@@ -86,11 +132,12 @@ export default function Header({data}: HeaderProps) {
             <li key={item.id}>
               <Link
                 href={item.href}
-                target={item.isExternal ? "_blank" : "_self"}
+                target={item.isExternal ? '_blank' : '_self'}
+                onClick={() => setNav(false)}
                 className={clsx(
-                  "regular-16 flex items-center justify-center cursor-pointer pb-1.5",
+                  'regular-16 flex items-center justify-center cursor-pointer pb-1.5',
                   {
-                    "font-semibold color-primary ": pathname === item.href,
+                    'font-semibold color-primary': pathname === item.href,
                   },
                 )}
               >
@@ -103,41 +150,122 @@ export default function Header({data}: HeaderProps) {
         <div className="md:flex">
           <Link
             href={cta.href}
-            target={cta.isExternal ? "_blank" : "_self"}
+            target={cta.isExternal ? '_blank' : '_self'}
             className="btn_primary"
           >
             {cta.text}
           </Link>
         </div>
       </nav>
-
-      <ul
-        className={!nav ? "hidden" : "absolute bg-white drop-shadow-2xl w-full"}
-      >
-        {navigation.map((item) => (
-          <li key={item.id}>
-            <Link
-              href={item.href}
-              target={item.isExternal ? "_blank" : "_self"}
-              className={clsx(
-                "py-6 text-black flex px-8 cursor-pointer pb-1.5",
-                {
-                  " font-bold color-primary": pathname === item.href,
-                },
-              )}
-            >
-              <h5>{item.text}</h5>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      {/* <Link
-          href={cta.href}
-          target={cta.isExternal ? "_blank" : "_self"}
-          className="block text-center btn_primary mt-8 mb-4 mx-4"
-        >
-          {cta.text}
-        </Link> */}
     </header>
   );
 }
+
+  // return (
+  //   <header className="w-full mx-auto h-[90px] md:px-10 z-10 bg-white fixed top-0">
+  //     <nav className="px-2 flex justify-between items-center md:gap-20 w-full h-full">
+  //       <div className="flex items-center justify-center">
+  //         <div className="md:hidden" onClick={handleclick}>
+  //           {!nav ? (
+  //             <FaBars className="w-9" size={16} />
+  //           ) : (
+  //             <FaXmark className="w-9" size={16} />
+  //           )}
+  //         </div>
+  //         <Link href="/" className="flex flex-row items-center gap-2">
+  //           {logo.image?.url ? (
+  //             <StrapiImage
+  //               src={logo.image.url}
+  //               alt={
+  //                 logo.image.alternativeText || "No alternative text provided"
+  //               }
+  //               className="hidden md:block"
+  //               width={40}
+  //               height={40}
+  //             />
+  //           ) : (
+  //             <div className="flex flex-col items-center justify-center text-slate-400 gap-2">
+  //               <svg
+  //                 className="w-8 h-8 opacity-40"
+  //                 fill="none"
+  //                 viewBox="0 0 24 24"
+  //                 stroke="currentColor"
+  //               >
+  //                 <path
+  //                   strokeLinecap="round"
+  //                   strokeLinejoin="round"
+  //                   strokeWidth={1.5}
+  //                   d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+  //                 />
+  //               </svg>
+  //               <span className="text-xs font-medium">
+  //                 No logo Image
+  //               </span>
+  //             </div>
+  //           )}
+
+  //           {logo.logoText && (
+  //             <div className="flex flex-col">
+  //               <span className="md:bold-32 bold-24">{logo.logoText}</span>
+  //               <span className="text-[8px] -mt-1 md:text-[11px] md:-mt-2 text-gray-600 text-center">
+  //                 {logo.logoDescription}
+  //               </span>
+  //             </div>
+  //           )}
+  //         </Link>
+  //       </div>
+
+  //       <ul className="hidden h-full md:flex justify-between items-center gap-12">
+  //         {navigation.map((item) => (
+  //           <li key={item.id}>
+  //             <Link
+  //               href={item.href}
+  //               target={item.isExternal ? "_blank" : "_self"}
+  //               onClick={() => setNav(false)}
+  //               className={clsx(
+  //                 "regular-16 flex items-center justify-center cursor-pointer pb-1.5",
+  //                 {
+  //                   "font-semibold color-primary ": pathname === item.href,
+  //                 },
+  //               )}
+  //             >
+  //               <h5>{item.text}</h5>
+  //             </Link>
+  //           </li>
+  //         ))}
+  //       </ul>
+
+  //       <div className="md:flex">
+  //         <Link
+  //           href={cta.href}
+  //           target={cta.isExternal ? "_blank" : "_self"}
+  //           className="btn_primary"
+  //         >
+  //           {cta.text}
+  //         </Link>
+  //       </div>
+  //     </nav>
+
+  //     <ul
+  //       className={!nav ? "hidden" : "absolute bg-white drop-shadow-2xl w-full"}
+  //     >
+  //       {navigation.map((item) => (
+  //         <li key={item.id}>
+  //           <Link
+  //             href={item.href}
+  //             target={item.isExternal ? "_blank" : "_self"}
+  //             className={clsx(
+  //               "py-6 text-black flex px-8 cursor-pointer pb-1.5",
+  //               {
+  //                 " font-bold color-primary": pathname === item.href,
+  //               },
+  //             )}
+  //           >
+  //             <h5>{item.text}</h5>
+  //           </Link>
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   </header>
+  // );
+//}

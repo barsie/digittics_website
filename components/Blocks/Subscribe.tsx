@@ -28,7 +28,7 @@ export function Subscribe({
     const successMessage = formState?.successMessage;
 
   return (
-    <section className='w-full max-w-7xl mx-auto px-4 my-12'>
+    <section className='w-full max-w-7xl mx-auto px-4 md:px-0 my-12'>
         <div className='flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-[#c5f8cb96] rounded-md p-6 md:p-8'>
             <div className='space-y-1 text-center lg:text-left'>
                 <h4 className='font-semibold text-xl md:text-2xl text-slate-900'>{headline}</h4>

@@ -57,7 +57,7 @@ export function Card({
                         )}
                     </div>
 
-                    <p className="text-sm text-slate-600 line-clamp-2">
+                    <p className="text-sm text-slate-600 line-clamp-2 md:line-clamp-4">
                         {description}
                     </p>
                 </div>
