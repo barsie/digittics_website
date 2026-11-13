@@ -29,10 +29,10 @@ export function Subscribe({
 
   return (
     <section className='w-full max-w-7xl mx-auto px-4 md:px-0 my-12'>
-        <div className='flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-[#c5f8cb96] rounded-md p-6 md:p-8'>
+        <div className='flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-[#1E293B] rounded-md p-6 md:p-8'>
             <div className='space-y-1 text-center lg:text-left'>
-                <h4 className='font-semibold text-xl md:text-2xl text-slate-900'>{headline}</h4>
-                <p className='text-sm md:text-base text-slate-700'>{content}</p>
+                <h4 className='font-semibold text-xl md:text-2xl text-slate-100'>{headline}</h4>
+                <p className='text-sm md:text-base text-slate-300'>{content}</p>
             </div>
             <form className='flex flex-col sm:flex-row items-stretch sm:items-center w-full lg:w-auto gap-2 sm:gap-0' action={formAction}>
                 <input 
@@ -44,7 +44,7 @@ export function Subscribe({
                 />
                 <button 
                     type='submit' 
-                    className='bg-[#2aa638] hover:bg-[#21852c] transition-colors text-white py-2.5 px-5 font-medium rounded-md sm:rounded-l-none sm:rounded-r-xl whitespace-nowrap'
+                    className='bg-[#2CCB73] hover:bg-[#21852c] transition-colors text-white py-2.5 px-5 font-medium rounded-md sm:rounded-l-none sm:rounded-r-xl whitespace-nowrap'
                 >
                     {buttonText}
                 </button>

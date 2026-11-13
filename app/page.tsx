@@ -22,7 +22,7 @@ export default async function HomeRoute() {
       <BlockRenderer blocks={blocks}/>
       <div className="max-w-[1240px] mx-auto px-4 md:px-0">
         <ContentList 
-          headline='Featured Articles'
+          headline='Articulos Importantes'
           path="/api/articles"
           component={BlogCard}
           featured

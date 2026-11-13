@@ -31,54 +31,63 @@
     }
 }
 
-@layer utilities{
-    
-    .color-primary{
-        @apply text-[#2aa638]
-    }
+@layer utilities {
+  .primary {
+    @apply w-full bg-cyan-400 p-3 rounded-full text-white font-semibold;
+  }
 
-    .small-10 {
-        @apply text-[10px] font-[400];
-    }
+  .secondary {
+    @apply w-full bg-[#0f172a] p-3 rounded-full text-white font-semibold;
+  }
+  .altenate {
+    @apply w-full bg-white p-3 rounded-full text-[#0f172a] font-semibold;
+  }
 
-    .regular-32 {
-        @apply text-[32px] font-[400];
-    }
+  /* Confianza y navegación */
+  .azul-pricipal{
+    @apply text-[#1546A0]
+  }
+  
+  /* Fondos */
+  .azul-oscuro{ 
+    @apply text-[#0E2B6D]
+  }
 
-    .regular-24 {
-        @apply text-[24px] font-[400];
-    }
-    
-    .regular-20 {
-        @apply text-[20px] font-[400];
-    }
+  /* CTA */
+  .verde-principal{
+    @apply text-[#2CCB73]
+  }
 
-    .regular-18 {
-        @apply text-[18px] font-[400];
-    }
+  /* Estados */
+  .verde-hover{
+    @apply text-[#22B864]
+  }
 
-    .regular-16 {
-        @apply text-[16px] font-[400];
-    }
+  .fondo{
+    @apply bg-[#F7F9FC]
+  }
 
-    .bold-40 {
-        @apply text-[48px] font-[700] leading-[120%];
-    }
+  .text {
+    @apply text-[#1E293B]
+  }
 
-    .bold-32 {
-        @apply text-[32px] font-[700] leading-[120%];
-    }
-    .bold-24 {
-        @apply text-[24px] font-[700] leading-[120%];
-    }
-    
-    .bold-20 {
-        @apply text-[20px] font-[700];
-    }
-    
-    .bold-18 {
-        @apply text-[18px] font-[700];
-    }
+  .texto-secundario{
+    @apply text-[#64748B]
+  }
+
+  .btn-primary{
+    @apply bg-[#2CCB73] px-3 py-2 rounded-full font-semibold text-[#1E293B]
+  }
+
+  .btn-secondary{
+    @apply bg-transparent px-3 py-2 border border-white rounded-full text-white font-semibold
+  }
+}
+
+html,
+body,
+#__next {
+  height: 100%;
 }
 
 .selection::selection{

@@ -18,13 +18,14 @@ export interface LogoProps {
     image: ImageProps
 }
 
-export interface FeatureProps {
+export interface ServiceProps {
     id: number;
     iconName: string;
     iconColor: "primary" | "secondary";
     iconSize: number;
     text: string;
     description: string;
+    link: LinkProps;
 }
 
 export interface ArticleProps {
@@ -42,8 +43,6 @@ export interface ArticleProps {
     createdAt: string;
     updatedAt: string;
 }
-
-
 
 export interface CardProps {
     documentId: string;
@@ -111,7 +110,7 @@ export type Block =
 HeroSectionProps 
 | InfoBlockProps 
 | PartnerSectionProps 
-| FeatureSectionProps 
+| ServiceSectionProps 
 | FeatureArticleProps 
 | SubscribeProps
 | HeadingProps
@@ -126,8 +125,10 @@ export interface HeroSectionProps extends Base<"blocks.hero-section">{
     image: ImageProps;
     cta?: LinkProps;
     logo?: LogoProps;
-    author: string;
-    darken: boolean;
+    author?: string;
+    darken?: boolean;
+    keywords?: string;
+    metrics?: LogoProps; 
 }
 
 export interface InfoBlockProps extends Base<"blocks.info-block">{
@@ -144,9 +145,9 @@ export interface PartnerSectionProps extends Base<"blocks.partner-section">{
     partners: LogoProps[];
 }
 
-export interface FeatureSectionProps extends Base<"blocks.feature-section">{
+export interface ServiceSectionProps extends Base<"blocks.feature-section">{
     heading?: string;
-    feature: FeatureProps[];
+    feature: ServiceProps[];
 }
 
 export interface FeatureArticleProps extends Base<"blocks.feature-article">{
