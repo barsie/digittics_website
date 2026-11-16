@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    .btn_primary{
+        @apply rounded-full border border-[#2aa638] bg-[#2aa638]  text-[#fff] px-4 py-2 md:px-6 md:py-3
+    }
+
+    .btn-secondary{
+        @apply rounded-md border border-[#fff] bg-[#fff]  text-[#2aa638] px-4 py-2 md:px-6 md:py-3
+    }
+
+    .w-50{
+        @apply w-1/2
+    }
+    
+    .newsletter__email {
+        @apply w-full sm:w-64 md:w-80 bg-white border border-transparent text-black py-2.5 px-3 rounded-md sm:rounded-l-xl sm:rounded-r-none focus:outline-none focus:border-[#2aa638] transition-colors duration-200;
+
+    }
+
+    .newsletter__email--error{
+        @apply border-red-600 focus:border-red-600 bg-red-50 text-red-900 placeholder-red-400;
+
+    }
+
+    
+    .disabled{
+        @apply bg-[#c5f8cb96]
+    }
+}
+
+@layer utilities {
+  .primary {
+    @apply w-full bg-cyan-400 p-3 rounded-full text-white font-semibold;
+  }
+
+  .secondary {
+    @apply w-full bg-[#0f172a] p-3 rounded-full text-white font-semibold;
+  }
+  .altenate {
+    @apply w-full bg-white p-3 rounded-full text-[#0f172a] font-semibold;
+  }
+
+  /* Confianza y navegación */
+  .azul-pricipal{
+    @apply text-[#1546A0]
+  }
+  
+  /* Fondos */
+  .azul-oscuro{ 
+    @apply text-[#0E2B6D]
+  }
+
+  /* CTA */
+  .verde-principal{
+    @apply text-[#2CCB73]
+  }
+
+  /* Estados */
+  .verde-hover{
+    @apply text-[#22B864]
+  }
+
+  .fondo{
+    @apply bg-[#F7F9FC]
+  }
+
+  .text {
+    @apply text-[#1E293B]
+  }
+
+  .texto-secundario{
+    @apply text-[#64748B]
+  }
+
+  .btn-primary{
+    @apply bg-[#2CCB73] px-3 py-2 rounded-full font-semibold text-[#1E293B]
+  }
+
+  .btn-secondary{
+    @apply bg-transparent px-3 py-2 border border-white rounded-full text-white font-semibold
+  }
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+.selection::selection{
+    color: #fff;
+    background: #0174da;
+}
+
+.hide-scrollbar::-webkit-scrollbar{
+    display: none;
+}
