@@ -2,6 +2,11 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+Set `STRAPI_API_URL` to the base URL of the Strapi server reachable by Next.js.
+It is required for production builds and runtime; development defaults to
+`http://localhost:1337` when it is unset. Configure `NEXT_PUBLIC_API_URL`
+separately for the existing live-preview message origin.
+
 First, run the development server:
 
 ```bash

@@ -1,8 +1,5 @@
 import qs from "qs";
 import { fetchAPI } from "@/utils/fetch-api";
-import { getStrapiURL } from "@/utils/get-strapi-url";
-
-const BASE_URL = getStrapiURL();
 
 const BLOG_PAGE_SIZE = 3;
 
@@ -59,11 +56,7 @@ const homePageQuery = qs.stringify({
 
 
 export async function getHomePage() {
-  const path = "/api/home-page";
-  const url = new URL(path, BASE_URL);
-  url.search = homePageQuery;
-
-  return await fetchAPI(url.href, { method: "GET" });
+  return await fetchAPI(`/api/home-page?${homePageQuery}`, { method: "GET" });
 }
 
 const globalSettingQuery = qs.stringify({
@@ -98,10 +91,7 @@ const globalSettingQuery = qs.stringify({
 });
 
 export async function getGlobalSettings() {
-  const path = "/api/global";
-  const url = new URL(path, BASE_URL);
-  url.search = globalSettingQuery;
-  return fetchAPI(url.href, { method: "GET" });
+  return fetchAPI(`/api/global?${globalSettingQuery}`, { method: "GET" });
 }
 
 const pageByQuerySlug = (slug: string) =>
@@ -170,10 +160,7 @@ const pageByQuerySlug = (slug: string) =>
   });
 
 export async function getPageBySlug(slug: string) {
-  const path = "/api/pages";
-  const url = new URL(path, BASE_URL);
-  url.search = pageByQuerySlug(slug);
-  return fetchAPI(url.href, { method: "GET" });
+  return fetchAPI(`/api/pages?${pageByQuerySlug(slug)}`, { method: "GET" });
 }
 
 
@@ -184,8 +171,6 @@ export async function getContent(
   page?: string,
 
 ) {
-
-  const url = new URL(path, BASE_URL)
 
   const filters: any = {
     ...( featured && { featured: { $eq: featured} }),
@@ -198,7 +183,7 @@ export async function getContent(
     ];
   }
 
-  url.search = qs.stringify({
+  const search = qs.stringify({
     sort: "createdAt:desc",
     filters,
     pagination: {
@@ -212,7 +197,7 @@ export async function getContent(
     },
   });
 
-  return fetchAPI(url.href, {method: "GET"})
+  return fetchAPI(`${path}?${search}`, {method: "GET"})
 }
 
 const blogPopulate = {
@@ -277,7 +262,6 @@ const blogPopulate = {
 };
 
 export async function getContentBySlug(slug: string, path: string) {
-  const url = new URL(path, BASE_URL);
   const queryParams = qs.stringify({
     filters: {
       slug: {
@@ -294,9 +278,7 @@ export async function getContentBySlug(slug: string, path: string) {
   {encodeValuesOnly: true}
 );
 
-  url.search = queryParams;
-  console.log("API URL: ", url.href)
-  return fetchAPI(url.href, { 
+  return fetchAPI(`${path}?${queryParams}`, {
     method: "GET", 
     next: {revalidate: 0}
     // cache: "no-store"

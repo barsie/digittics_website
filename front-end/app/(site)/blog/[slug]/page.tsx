@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import {  notFound } from "next/navigation";
 import { formatDate } from "@/utils/format-date";
 import { getContentBySlug } from "@/data/loaders";
 import { BlockRenderer } from "@/components/BlockRederer";

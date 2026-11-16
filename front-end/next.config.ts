@@ -1,4 +1,7 @@
 import type { NextConfig } from "next";
+import { getStrapiURL } from "./utils/get-strapi-url";
+
+const strapiURL = new URL(getStrapiURL());
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -9,10 +12,10 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "127.0.0.1",
-        port: "1337",
-        pathname: "/uploads/**/*"
+        protocol: strapiURL.protocol === "https:" ? "https" : "http",
+        hostname: strapiURL.hostname,
+        port: strapiURL.port,
+        pathname: `${strapiURL.pathname.replace(/\/+$/, "")}/uploads/**/*`
       },
     ],
   },

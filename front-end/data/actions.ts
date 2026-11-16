@@ -2,6 +2,20 @@
 import { z } from "zod";
 import eventSubscribeService, { subscribeService } from "./services";
 import { EventsSubscribeProps } from "@/types";
+import { StrapiHTTPError } from "@/utils/fetch-api";
+
+async function signupResponse(request: Promise<unknown>) {
+    try {
+        return await request;
+    } catch (error) {
+        if (error instanceof StrapiHTTPError && [400, 409, 422].includes(error.status) &&
+            typeof error.responseBody === "object" && error.responseBody !== null &&
+            "error" in error.responseBody && error.responseBody.error) {
+            return error.responseBody;
+        }
+        throw error;
+    }
+}
 
 const subscribeSchema = z.object({
     email: z.email({
@@ -30,7 +44,7 @@ export async function subscribeAction(prevState: any, formData:FormData) {
         }
     }
 
-    const responseData = await subscribeService(validatedFields.data.email);
+    const responseData = await signupResponse(subscribeService(validatedFields.data.email));
 
     if(!responseData){
         return{
@@ -42,7 +56,7 @@ export async function subscribeAction(prevState: any, formData:FormData) {
         }
     }
 
-    if(responseData.error){
+    if(typeof responseData === "object" && "error" in responseData && responseData.error){
         return{
             ...prevState,
             strapiErrors: responseData.error,
@@ -101,7 +115,7 @@ export async function eventSubscribeAction(prevState: any, formData: FormData){
         }
     }
 
-    const responseData = await eventSubscribeService(dataToSend);
+    const responseData = await signupResponse(eventSubscribeService(dataToSend));
 
     if(!responseData) {
         return {
@@ -112,7 +126,7 @@ export async function eventSubscribeAction(prevState: any, formData: FormData){
         }
     }
 
-        if(responseData.error){
+        if(typeof responseData === "object" && "error" in responseData && responseData.error){
         return{
             ...prevState,
             strapiErrors: responseData.error,
