@@ -3,3 +3,7 @@ node_modules/
 .tmp/
 build/
 .cache/
+
+
+# Local Git history backups
+**/.git-backup/
