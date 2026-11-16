@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_blocks_authors",
+  "info": {
+    "displayName": "Author"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "profession": {
+      "type": "string"
+    },
+    "image": {
+      "type": "component",
+      "component": "elements.logo",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

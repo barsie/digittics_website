@@ -1,0 +1,61 @@
+{
+    "kind": "collectionType",
+    "collectionName": "events",
+    "info": {
+        "singularName": "event",
+        "pluralName": "events",
+        "displayName": "Event"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "description": {
+            "type": "text"
+        },
+        "image": {
+            "type": "media",
+            "multiple": false,
+            "allowedTypes": [
+                "images",
+                "files"
+            ]
+        },
+        "featured": {
+            "type": "boolean",
+            "default": false
+        },
+        "slug": {
+            "type": "uid",
+            "targetField": "title"
+        },
+        "price": {
+            "type": "string"
+        },
+        "startDate": {
+            "type": "datetime"
+        },
+        "blocks": {
+            "type": "dynamiczone",
+            "components": [
+                "blocks.heading",
+                "blocks.paragraph"
+            ]
+        },
+        "eventSignups": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::event-signup.event-signup",
+            "mappedBy": "event"
+        },
+        "sponsors": {
+            "type": "component",
+            "component": "blocks.partner-section",
+            "repeatable": true
+        }
+    }
+}

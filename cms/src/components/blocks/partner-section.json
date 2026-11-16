@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_blocks_partner_sections",
+  "info": {
+    "displayName": "Partner Section"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "partners": {
+      "type": "component",
+      "component": "elements.logo",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

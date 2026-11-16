@@ -1,0 +1,30 @@
+{
+    "collectionName": "components_blocks_feature_articles",
+    "info": {
+        "displayName": "Feature Article"
+    },
+    "options": {},
+    "attributes": {
+        "headline": {
+            "type": "string"
+        },
+        "summary": {
+            "type": "richtext"
+        },
+        "link": {
+            "type": "component",
+            "component": "elements.link",
+            "repeatable": false
+        },
+        "image": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": [
+                "images",
+                "files"
+            ]
+        }
+    },
+    "config": {}
+}

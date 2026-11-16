@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_elements_features",
+  "info": {
+    "displayName": "Features"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "iconName": {
+      "type": "string"
+    },
+    "iconColor": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary"
+      ]
+    },
+    "iconSize": {
+      "type": "integer"
+    },
+    "link": {
+      "type": "component",
+      "component": "elements.link",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}
