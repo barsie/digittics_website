@@ -11,10 +11,10 @@ import { LinkProps, LogoProps } from '@/types'
 
 interface HeaderProps {
   data: {
-    logo: LogoProps;
-    navigation: LinkProps[];
-    cta: LinkProps;
-  }
+    logo?: LogoProps | null;
+    navigation?: LinkProps[] | null;
+    cta?: LinkProps | null;
+  } | null;
 }
 
 export default function Header({data}: HeaderProps) {
@@ -48,6 +48,7 @@ export default function Header({data}: HeaderProps) {
     if(!data) return null;
 
     const {logo, navigation, cta} = data;
+    const navigationItems = navigation ?? [];
 
     const isNavActive = (href?: string) => {
       if (!href || href.startsWith("http")) return false;
@@ -75,7 +76,7 @@ export default function Header({data}: HeaderProps) {
                   : 'absolute left-0 top-full mt-6 bg-white drop-shadow-2xl w-screen h-screen z-50'
               }
             >
-              {navigation.map((item) => (
+              {navigationItems.map((item) => (
                 <li key={item.id}>
                   <Link
                     href={item.href}
@@ -96,7 +97,7 @@ export default function Header({data}: HeaderProps) {
           </div>
 
           <Link href="/" className="flex flex-row items-center gap-2">
-            {logo.image?.url ? (
+            {logo?.image?.url ? (
               <StrapiImage
                 src={logo.image.url}
                 alt={logo.image.alternativeText || 'No alternative text provided'}
@@ -123,7 +124,7 @@ export default function Header({data}: HeaderProps) {
               </div>
             )}
 
-            {logo.logoText && (
+            {logo?.logoText && (
               <div className="flex flex-col uppercase">
                 <span className="text-[1rem] font-semibold">{logo.logoText}</span>
                 <span className="text-[8px] md:text-[12px] md:-mt-2 font-light text-slate-200">
@@ -135,7 +136,7 @@ export default function Header({data}: HeaderProps) {
         </div>
 
         <ul className="hidden h-full md:flex justify-between items-center gap-12">
-          {navigation.map((item) => (
+          {navigationItems.map((item) => (
             <li key={item.id}>
               <Link
                 href={item.href}
@@ -154,6 +155,7 @@ export default function Header({data}: HeaderProps) {
           ))}
         </ul>
 
+        {cta?.href && cta.text && (
         <div className="md:flex">
           <Link
             href={cta.href}
@@ -163,6 +165,7 @@ export default function Header({data}: HeaderProps) {
             {cta.text}
           </Link>
         </div>
+        )}
       </nav>
     </header>
   );

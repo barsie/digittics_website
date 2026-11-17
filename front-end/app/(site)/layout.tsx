@@ -7,14 +7,16 @@ import { getStrapiURL } from "@/utils/get-strapi-url";
 
 export default async function SiteLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const { data } = await getGlobalSettings();
-  if (!data) throw new Error("Failed to fetch global settings");
+  if (!data) {
+    throw new Error("Required Strapi Global content is missing or unpublished at /api/global.");
+  }
 
   return (
     <StrapiMediaProvider baseURL={getStrapiURL()}>
-      <Header data={data.header} />
+      <Header data={data.header ?? null} />
       {children}
       <LivePreview />
-      <Footer data={data.footer} />
+      <Footer data={data.footer ?? null} />
     </StrapiMediaProvider>
   );
 }

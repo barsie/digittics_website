@@ -6,6 +6,9 @@ Set `STRAPI_API_URL` to the base URL of the Strapi server reachable by Next.js.
 It is required for production builds and runtime; development defaults to
 `http://localhost:1337` when it is unset. Configure `NEXT_PUBLIC_API_URL`
 separately for the existing live-preview message origin.
+The site layout requires a published Global single type at `/api/global`;
+missing optional header or footer components are omitted, while endpoint and
+permission errors remain visible with their status.
 
 First, run the development server:
 

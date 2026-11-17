@@ -76,6 +76,17 @@ test("HTTP errors include endpoint and status and retain the response for signup
     assert.doesNotMatch(error.message, /secret/);
     return true;
   });
+  for (const [status, message] of [
+    [401, /unauthorized/], [403, /permissions/], [404, /endpoint, content type/], [503, /CMS server error/],
+  ]) {
+    global.fetch = async () => new Response(null, { status });
+    await assert.rejects(fetchAPI("/api/global", { method: "GET" }), (error) => {
+      assert.ok(error instanceof StrapiHTTPError);
+      assert.equal(error.status, status);
+      assert.match(error.message, message);
+      return true;
+    });
+  }
   global.fetch = async () => new Response("bad json", { status: 502, headers: { "content-type": "application/json" } });
   await assert.rejects(fetchAPI("/api/global", { method: "GET" }), (error) =>
     error instanceof StrapiHTTPError && error.status === 502 && error.cause instanceof SyntaxError);

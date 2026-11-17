@@ -15,7 +15,12 @@ interface FetchAPIOptions{
 
 export class StrapiHTTPError extends Error {
     constructor(public status: number, public responseBody: unknown, endpoint: string, cause?: unknown) {
-        super(`Strapi HTTP error: ${endpoint} returned status ${status}.`, { cause });
+        const statusText = {
+            401: "unauthorized; check the API token",
+            403: "forbidden; check the Strapi role permissions",
+            404: "not found; check the endpoint, content type, and publication status",
+        }[status] ?? (status >= 500 ? "CMS server error" : "request rejected");
+        super(`Strapi HTTP error: ${endpoint} returned ${status} (${statusText}).`, { cause });
         this.name = "StrapiHTTPError";
         Object.defineProperty(this, "responseBody", { enumerable: false });
     }
